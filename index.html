@@ -2,96 +2,66 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>Quoth the Giphy</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+    <title>GifTastic</title>
 </head>
 
 <body>
-    <div class="container">
-<div class="buttons">
-  <button data-person="Arnold Schwarzenegger">I'll be back</button>
-  <button data-person="Michael J Fox">
-    My happiness grows in direct proportionto my acceptance,
-    and in inverse proportion to my expectations.
-  </button>
-  <!-- STEP TWO: between the dashed lines below
-        * add three more buttons
-        * add a data-person attribute of famous people you know
-        * with a quote said by them -->
+    <header>
+        <div class="jumbotron">
+            <p class="title" style="font-family: cursive; font-size: 24px">Lets get GifTastic!!</p>
+        </div>
+    </header>
 
-  <!--  -->
 
-  <button data-person="Lucille Ball">
-    Love yourself first and everything else falls into line.
-  </button>
-  <button data-person="Taylor Swift">
-    If you're horrible to me, I'm going to write a song about it,
-    and you won't like it. That's how I operate.
-  </button>
-  <button data-person="Samuel Jackson">
-    Far better is it to dare mighty things, to win glorious triumphs,
-    even though checkered by failure... than to rank with those poor spirits who
-    neither enjoy nor suffer much, because they live in a gray twilight that
-    knows not victory nor defeat.
-  </button>
-</div>
-</div>
-  <div id="gifs-appear-here">
-  </div>
+    <div class="row">
+        <div class="buttons">
+            <button type="button" class="btn btn-success" data-person="Arnold Schwarzenegger">I'll be back!</button>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript">
-    // Event listener for all button elements
-    $("button").on("click", function() {
-      // In this case, the "this" keyword refers to the button that was clicked
-      var person = $(this).attr("data-person");
+            <!-- <button class="quotes" data-person="Arnold Schwarzenegger">I'll be back</button> -->
+            <button type="button" class="btn btn-success" data-person="Michael J Fox">My happiness grows in direct
+                proportionto my acceptance,</button>
 
-      // Constructing a URL to search Giphy for the name of the person who said the quote
-      var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        person + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+            <!-- <button class="quotes" data-person="Michael J Fox">
+                My happiness grows in direct proportionto my acceptance,
+                and in inverse proportion to my expectations.
+            </button> -->
+            <!-- STEP TWO: between the dashed lines below
+                * add three more buttons
+                * add a data-person attribute of famous people you know
+                * with a quote said by them -->
 
-      // Performing our AJAX GET request
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      })
-        // After the data comes back from the API
-        .then(function(response) {
-          // Storing an array of results in the results variable
-          var results = response.data;
+            <!--  -->
+            <button type="button" class="btn btn-success" data-person="Lucille Ball">Love yourself first and everything
+                else falls in line.</button>
 
-          // Looping over every result item
-          for (var i = 0; i < results.length; i++) {
-
-            // Only taking action if the photo has an appropriate rating
-            if (results[i].rating !== "r" && results[i].rating !== "pg-13") {
-              // Creating a div for the gif
-              var gifDiv = $("<div>");
-
-              // Storing the result item's rating
-              var rating = results[i].rating;
-
-              // Creating a paragraph tag with the result item's rating
-              var p = $("<p>").text("Rating: " + rating);
-
-              // Creating an image tag
-              var personImage = $("<img>");
-
-              // Giving the image tag an src attribute of a proprty pulled off the
-              // result item
-              personImage.attr("src", results[i].images.fixed_height.url);
-
-              // Appending the paragraph and personImage we created to the "gifDiv" div we created
-              gifDiv.append(p);
-              gifDiv.append(personImage);
-
-              // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
-              $("#gifs-appear-here").prepend(gifDiv);
-            }
-          }
-        });
-    });
-  </script>
+            <button type="button" class="btn btn-success" data-person="Taylor Swift">
+                If you're horrible to me, I'm going to write a song about it,
+            </button>
+            <button type="button" class="btn btn-success" data-person="Samuel Jackson">
+                Far better is it to dare mighty things, to win glorious triumphs,
+                even though checkered by failure...</button>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <form>
+                <input type="text" name="giphy" id="giphy">
+                <input type="submit" value="submit" class="btn" id="submit">
+            </form>
+        </div>
+    </div>
+    <div id="gifs-appear-here">
+    </div>
+    <script type="text/javascript" src="assets/javascript/gif.js"></script>
 </body>
 
 </html>
