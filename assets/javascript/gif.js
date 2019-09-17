@@ -1,79 +1,69 @@
-$(document).ready();
+console.log("hey it worked");
 
-function renderButtons(){
-	for(var i = 0; i < topics.length; i++) {
-		var newButton = $("<button>");
-		newButton.addClass("btn");
-		newButton.addClass("cartoon-button");
-		newButton.text(topics[i]);
-		$("#button-container").append(newButton);
-	}
-	$(".submit").unbind("click");
+var somethingArray = ["Drake", "Eminem", "Coheed and Cambria", "The killers", "Bright Eyes", "The Postal Service"];
+function renderButtons() {
+    $(".row2").empty();
+    for (var i = 0; i < somethingArray.length; i++) {
+        var button = $("<button>");
+        button.addClass("somethingButton");
+        button.attr("data-something", somethingArray[i]);
+        button.text(somethingArray[i]);
 
-	$(".submit").on("click", function(){
-		$(".gif-image").unbind("click");
-		$("#gif-container").empty();
-		$("#gif-container").removeClass("dotted-border");
-		populateGIFContainer($(this).text());
-	});
-
+        $(".row2").append(button);
+    }
 }
+$("#add-something").on("click", function (event) {
 
-function addButton(show){
-	if(topics.indexOf(show) === -1) {
-		topics.push(show);
-		$("#button-container").empty();
-		renderButtons();
-	}
-}
 
-// Event listener for all button elements
- $("button").on("click", function () {
-    // In this case, the "this" keyword refers to the button that was clicked
-    var person = $(this).attr("data-person");
+    event.preventDefault();
+    var something = $("#something-input").val().trim();
+    somethingArray.push(something);
+    $("#something-input").val("");
+    renderButtons();
+});
 
-    // Constructing a URL to search Giphy for the name of the person who said the quote
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        person + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=15";
+function fetchSomthingGifs() {
+    var somethingName = $(this).attr("data-something");
+    var somethingStr = somethingName.split("").join("+");
 
-    // Performing our AJAX GET request
+    // var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&q=" + somethingStr + "&limit=15&offset=0&rating=G&lang=en";
+    var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&tag=deadpool";
+
     $.ajax({
         url: queryURL,
         method: "GET"
-    })
-        // After the data comes back from the API
-        .then(function (response) {
-            // Storing an array of results in the results variable
-            var results = response.data;
+    }).done(function(results) {
+        var dataArray = results.data;
+        $(".row3").empty();
+        for(var i=0; i < dataArray.length; i++){
 
-            // Looping over every result item
-            for (var i = 0; i < results.length; i++) {
-
-                // Only taking action if the photo has an appropriate rating
-                if (results[i].rating !== "r" && results[i].rating !== "r") {
-                    // Creating a div for the gif
-                    var gifDiv = $("<div>");
-
-                    // Storing the result item's rating
-                    var rating = results[i].rating;
-
-                    // Creating a paragraph tag with the result item's rating
-                    var p = $("<p>").text("Rating: " + rating);
-
-                    // Creating an image tag
-                    var personImage = $("<img>");
-
-                    // Giving the image tag an src attribute of a proprty pulled off the
-                    // result item
-                    personImage.attr("src", results[i].images.fixed_height.url);
-
-                    // Appending the paragraph and personImage we created to the "gifDiv" div we created
-                    gifDiv.append(p);
-                    gifDiv.append(personImage);
-
-                    // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
-                    $("#gifs-appear-here").prepend(gifDiv);
-                }
-            }
-        });
+            var newDiv = $("<div>");
+            newDiv.addCLass("somethingGif");
+            var newRating = $("<h2>").html("Rating:" + dataArray[i].rating);
+            newDiv.append(newRating);
+            var img =$("<img>");
+            img.attr("src", dataArray[i].images.fixed_height_stil.url);
+            img.attr("data-still", dataArray[i].images.fixed_height_still.url);
+            img.attr("data-animate", dataArray[i].images.fixed_height.url);
+            img.attr("data-state", "still");
+            newDiv.append(img);
+            $(".row3").append(newDiv);
+        }
+    });
+}
+function animateGifs() {
+    var state = $(this).find("img").attr("data-state");
+    if (state === "still")
+    {
+        $(this).find("img").attr("src", $(this).find("img").attr("data-animate"));
+    }
+    else{
+        $(this).find("img").attr("src", $(this).find("img").attr("data-still"));
+        $(this).find("Img").attr("data-state", "still");
+    }
+}
+$(document).ready(function(){
+    renderButtons();
 });
+$(document).on("click", ".somethingButoon", fetchSomthingGifs);
+$(document).on("click", ".somethingGif", animateGifs);

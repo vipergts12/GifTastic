@@ -1,7 +1,38 @@
-body{
+body {
+    background-color: bisque;
     font-family: fantasy;
-    margin-left: 100px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
-.btn-success {
-font-family: fantasy;
+header{
+    text-align: center;
+    color: seagreen;
+}
+.somethingButton {
+    font-family: fantasy;
+}
+.somethingButton:hover {
+    background-color:royalblue;
+    box-shadow: 5px 5px 2.5px gray; 
+}
+.jumbotron {
+    background-color: aqua;
+    box-shadow: 10px 10px 5px gray;
+}
+.jumbotron:hover {
+    box-shadow: 15px 15px 10px gray;
+}
+.footer {
+    padding-top: 200px;
+    text-align: center;
+}
+.container {
+    padding-top: 20px;
+}
+.row {
+    padding-bottom: 20px;
+}
+#add-something:hover{
+    background-color: royalblue;
+    box-shadow: 5px 5px 2.5px gray;
 }

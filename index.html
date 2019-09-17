@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/style/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
@@ -17,50 +17,34 @@
 <body>
     <header>
         <div class="jumbotron">
-            <p class="title" style="font-family: cursive; font-size: 24px">Lets get GifTastic!!</p>
+            <p class="title" style="font-family: fantasy; font-size: 24px">Lets get GifTastic!!</p>
         </div>
     </header>
 
-
-    <div class="row">
-        <div class="buttons">
-            <button type="button" class="btn btn-success" data-person="Arnold Schwarzenegger">I'll be back!</button>
-
-            <!-- <button class="quotes" data-person="Arnold Schwarzenegger">I'll be back</button> -->
-            <button type="button" class="btn btn-success" data-person="Michael J Fox">My happiness grows in direct
-                proportionto my acceptance,</button>
-
-            <!-- <button class="quotes" data-person="Michael J Fox">
-                My happiness grows in direct proportionto my acceptance,
-                and in inverse proportion to my expectations.
-            </button> -->
-            <!-- STEP TWO: between the dashed lines below
-                * add three more buttons
-                * add a data-person attribute of famous people you know
-                * with a quote said by them -->
-
-            <!--  -->
-            <button type="button" class="btn btn-success" data-person="Lucille Ball">Love yourself first and everything
-                else falls in line.</button>
-
-            <button type="button" class="btn btn-success" data-person="Taylor Swift">
-                If you're horrible to me, I'm going to write a song about it,
-            </button>
-            <button type="button" class="btn btn-success" data-person="Samuel Jackson">
-                Far better is it to dare mighty things, to win glorious triumphs,
-                even though checkered by failure...</button>
-        </div>
-        <br>
-        <br>
+<div class="container">
+    <div class="row" id="buttonPanel">
         <div class="row">
-            <form>
-                <input type="text" name="giphy" id="giphy">
-                <input type="submit" value="submit" class="btn" id="submit">
-            </form>
+            <!-- <button type="button" class="btn btn-success" data-person="Arnold Schwarzenegger">I'll be back!</button> -->
+            <div class="col-lg-10" id="gifCol">
+                <form id="someting-form">
+                    <label for="something-input" class="inputLabel">Add a button</label>
+                    <input type="text" id="something-input"><br>
+                    <input id="add-something" type="submit" value="submit">
+                </div>
+        </div>
+        <div class="row2">
+        </div>
+        <div class="row3">
+
         </div>
     </div>
-    <div id="gifs-appear-here">
-    </div>
+</div>
+<div class="footer">
+    <footer>
+        <p>Had enough DeadPool Gifs?</p><p><a href="https://vipergts12.github.io/Responsive-portfolio/portfolio.html">Click Here to play other Games!</a></p>
+    </footer>
+</div>
+            
     <script type="text/javascript" src="assets/javascript/gif.js"></script>
 </body>
 
