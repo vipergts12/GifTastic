@@ -2,6 +2,7 @@ console.log("hey it worked");
 
 var somethingArray = ["Drake", "Eminem", "Coheed and Cambria", "The killers", "Bright Eyes", "The Postal Service"];
 function renderButtons() {
+    console.log(somethingArray);
     $(".row2").empty();
     for (var i = 0; i < somethingArray.length; i++) {
         var button = $("<button>");
@@ -27,7 +28,7 @@ function fetchSomthingGifs() {
     var somethingStr = somethingName.split("").join("+");
 
     // var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&q=" + somethingStr + "&limit=15&offset=0&rating=G&lang=en";
-    var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&tag=deadpool";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=039e302706e04dc9935175cd77b88df2&q=" + somethingStr + "&limit=25&offset=0&rating=G&lang=en";
 
     $.ajax({
         url: queryURL,
