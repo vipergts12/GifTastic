@@ -12,7 +12,7 @@ header{
     font-family: fantasy;
 }
 .somethingButton:hover {
-    background-color:royalblue;
+    background-color: red;
     box-shadow: 5px 5px 2.5px gray; 
 }
 .jumbotron {
@@ -35,4 +35,7 @@ header{
 #add-something:hover{
     background-color: royalblue;
     box-shadow: 5px 5px 2.5px gray;
+}
+input:hover {
+    background-color: linen;
 }
