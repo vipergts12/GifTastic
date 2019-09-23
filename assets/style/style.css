@@ -42,8 +42,8 @@ input:hover {
     background-color: linen;
 }
 label {
-    color: rgb(9, 245, 9); 
+    color: white; 
 }
 legend{
-    color: rgb(9, 245, 9);
+    color: white;
 }
