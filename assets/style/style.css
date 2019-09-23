@@ -1,5 +1,7 @@
 body {
-    background-color: bisque;
+    background-image:url("http://eskipaper.com/images/awesome-background-images-4.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     font-family: fantasy;
     margin-left: 20px;
     margin-right: 20px;
@@ -16,11 +18,11 @@ header{
     box-shadow: 5px 5px 2.5px gray; 
 }
 .jumbotron {
-    background-color: aqua;
-    box-shadow: 10px 10px 5px gray;
+
+    box-shadow: 10px 10px 5px black;
 }
 .jumbotron:hover {
-    box-shadow: 15px 15px 10px gray;
+    box-shadow: 15px 15px 10px black;
 }
 .footer {
     padding-top: 200px;
@@ -38,4 +40,10 @@ header{
 }
 input:hover {
     background-color: linen;
+}
+label {
+    color: rgb(9, 245, 9); 
+}
+legend{
+    color: rgb(9, 245, 9);
 }
